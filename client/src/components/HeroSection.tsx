@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useReducedMotion } from 'framer-motion';
 
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      setCount(end);
+      setIsAnimating(false);
+      return;
+    }
+
     let startTime: number | null = null;
     const startValue = 0;
 
@@ -17,20 +26,59 @@ function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: num
 
       if (progress < 1) {
         requestAnimationFrame(animate);
+      } else {
+        setIsAnimating(false);
       }
     };
 
     requestAnimationFrame(animate);
-  }, [end, duration]);
+  }, [end, duration, shouldReduceMotion]);
 
-  return <span>{count}</span>;
+  return (
+    <span className={`font-mono ${isAnimating && !shouldReduceMotion ? 'animate-glitch-flicker' : ''}`}>
+      {count}
+    </span>
+  );
+}
+
+function ParticleEmitter() {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return null;
+  }
+
+  const particles = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 5}s`,
+    duration: `${8 + Math.random() * 4}s`,
+  }));
+
+  return (
+    <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none overflow-hidden">
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute bottom-0 w-1 h-1 bg-primary/30 rounded-full blur-[1px] animate-particle-float"
+          style={{
+            left: particle.left,
+            animationDelay: particle.delay,
+            animationDuration: particle.duration,
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
     }
   };
 
@@ -45,6 +93,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl animate-pulse" />
       </div>
+      
+      <ParticleEmitter />
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 animate-pulse-glow">
@@ -73,7 +123,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <Button
             size="lg"
-            className="text-base font-medium group"
+            className="text-base font-medium group hover-glow"
             onClick={() => scrollToSection('#experience')}
             data-testid="button-view-work"
           >
@@ -83,7 +133,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="text-base font-medium backdrop-blur-sm"
+            className="text-base font-medium backdrop-blur-sm hover-glow"
             onClick={() => scrollToSection('#contact')}
             data-testid="button-get-in-touch"
           >

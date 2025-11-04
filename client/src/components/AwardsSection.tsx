@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { useInView, useReducedMotion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Trophy, Handshake, Lightbulb, TrendingUp } from 'lucide-react';
 
@@ -36,7 +38,12 @@ const awards = [
   },
 ];
 
+const staggerClasses = ['stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'];
+
 export default function AwardsSection() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section className="py-24 px-6 relative overflow-hidden" data-testid="section-awards">
       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-accent/5 pointer-events-none" />
@@ -54,19 +61,23 @@ export default function AwardsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={sectionRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {awards.map((award, index) => {
             const Icon = award.icon;
             return (
               <Card
                 key={index}
-                className="relative p-8 bg-card/50 backdrop-blur-sm border-card-border hover-elevate group overflow-hidden"
+                className={`relative p-8 bg-card/50 backdrop-blur-sm border-card-border hover-elevate group overflow-hidden ${
+                  shouldReduceMotion ? '' : (isInView ? `animate-zoom-fade ${staggerClasses[index]}` : 'opacity-0')
+                }`}
                 data-testid={`card-award-${award.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${award.color} opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity`} />
                 
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className={`p-5 rounded-2xl bg-gradient-to-br ${award.color} mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+                  <div className={`p-5 rounded-2xl bg-gradient-to-br ${award.color} mb-6 shadow-lg group-hover:scale-110 transition-transform ${
+                    shouldReduceMotion ? '' : (isInView ? `animate-icon-pulse ${staggerClasses[index]}` : '')
+                  }`}>
                     <Icon className="w-10 h-10 text-primary-foreground" />
                   </div>
 

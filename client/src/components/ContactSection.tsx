@@ -73,10 +73,10 @@ export default function ContactSection() {
             <div className="space-y-6">
               <a
                 href="mailto:Ash@spudblocks.com"
-                className="flex items-center gap-4 p-4 rounded-lg bg-accent/50 hover-elevate group"
+                className="flex items-center gap-4 p-4 rounded-lg bg-accent/50 hover-elevate group reduced-motion-safe:hover-sparkle"
                 data-testid="link-email"
               >
-                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors reduced-motion-safe:hover-sparkle">
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -90,7 +90,7 @@ export default function ContactSection() {
                 className="flex items-center gap-4 p-4 rounded-lg bg-accent/50 hover-elevate group"
                 data-testid="link-phone"
               >
-                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors reduced-motion-safe:hover-sparkle">
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -106,7 +106,7 @@ export default function ContactSection() {
                 className="flex items-center gap-4 p-4 rounded-lg bg-accent/50 hover-elevate group"
                 data-testid="link-linkedin"
               >
-                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors reduced-motion-safe:hover-sparkle">
                   <Linkedin className="w-6 h-6 text-primary" />
                 </div>
                 <div>

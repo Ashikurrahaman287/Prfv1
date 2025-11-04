@@ -29,7 +29,7 @@ export default function TrustedBySection() {
               <Badge
                 key={index}
                 variant="outline"
-                className="text-base px-6 py-3 whitespace-nowrap bg-card/50 backdrop-blur-sm hover-elevate"
+                className="text-base px-6 py-3 whitespace-nowrap bg-card/50 backdrop-blur-sm hover-elevate hover-glow"
                 data-testid={`badge-company-${company.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {company}
@@ -54,6 +54,11 @@ export default function TrustedBySection() {
         }
         .animate-scroll:hover {
           animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-scroll {
+            animation: none;
+          }
         }
       `}</style>
     </section>

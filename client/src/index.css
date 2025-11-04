@@ -342,6 +342,260 @@
     100% { background-position: 0% 50%; }
   }
 
+  /* 1. Digital Glitch Effect */
+  @keyframes digital-glitch {
+    0%, 100% { transform: translate(0); opacity: 1; }
+    10% { transform: translate(-2px, 1px); opacity: 0.8; }
+    20% { transform: translate(2px, -1px); opacity: 1; }
+    30% { transform: translate(-1px, 2px); opacity: 0.9; }
+    40% { transform: translate(1px, -2px); opacity: 1; }
+    50% { transform: translate(0); opacity: 0.95; }
+  }
+
+  @keyframes glitch-flicker {
+    0%, 100% { opacity: 1; }
+    25% { opacity: 0.7; }
+    50% { opacity: 1; }
+    75% { opacity: 0.8; }
+  }
+
+  /* 2. Blockchain Block Reveal */
+  @keyframes block-reveal {
+    0% {
+      transform: translateX(-100%) scaleX(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0) scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0) scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes block-slide-in {
+    0% {
+      transform: translateX(-20px);
+      opacity: 0;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  /* 3. Data Packet Pulse */
+  @keyframes data-packet {
+    0% {
+      transform: translateX(0) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse-line {
+    0%, 100% {
+      opacity: 0.3;
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  /* 4. Electric Blue Glow */
+  @keyframes electric-glow {
+    0% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+    }
+    50% {
+      box-shadow: 0 0 20px 4px hsl(var(--primary) / 0.6);
+    }
+    100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+    }
+  }
+
+  @keyframes glow-expand {
+    0% {
+      box-shadow: 0 0 4px 0 hsl(var(--primary) / 0.3);
+    }
+    100% {
+      box-shadow: 0 0 16px 4px hsl(var(--primary) / 0.5);
+    }
+  }
+
+  /* 5. Card Entry Animations */
+  @keyframes slide-up {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes zoom-fade-in {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes flip-3d {
+    0% {
+      transform: perspective(1000px) rotateY(-90deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: perspective(1000px) rotateY(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* 6. Sparkle/Pulse Effect */
+  @keyframes sparkle {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+      filter: brightness(1.3);
+    }
+    75% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes icon-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.6));
+    }
+  }
+
+  /* 7. Timeline Drawing */
+  @keyframes draw-line-vertical {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  @keyframes draw-line-horizontal {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes timeline-reveal {
+    0% {
+      stroke-dashoffset: 1000;
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  /* 8. Scan Effect */
+  @keyframes scan-line {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes circuit-trace {
+    0% {
+      background-position: 0% 0%;
+      opacity: 0.5;
+    }
+    100% {
+      background-position: 100% 100%;
+      opacity: 1;
+    }
+  }
+
+  /* 9. Particle Float Effect */
+  @keyframes particle-float {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(-128px) translateX(10px);
+    }
+    100% {
+      transform: translateY(-256px) translateX(-10px);
+      opacity: 0;
+    }
+  }
+
+  /* Utility Classes */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -353,5 +607,153 @@
   .animate-gradient {
     background-size: 200% 200%;
     animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-digital-glitch {
+    animation: digital-glitch 0.3s ease-in-out;
+  }
+
+  .animate-glitch-flicker {
+    animation: glitch-flicker 0.2s ease-in-out;
+  }
+
+  .animate-block-reveal {
+    animation: block-reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-block-slide {
+    animation: block-slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-data-packet {
+    animation: data-packet 2s linear infinite;
+  }
+
+  .animate-pulse-line {
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+
+  .animate-electric-glow {
+    animation: electric-glow 2s ease-in-out infinite;
+  }
+
+  .animate-glow-expand {
+    animation: glow-expand 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+  }
+
+  .animate-zoom-fade {
+    animation: zoom-fade-in 0.5s ease-out;
+  }
+
+  .animate-flip-3d {
+    animation: flip-3d 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  .animate-icon-pulse {
+    animation: icon-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-draw-vertical {
+    animation: draw-line-vertical 1s ease-out forwards;
+  }
+
+  .animate-draw-horizontal {
+    animation: draw-line-horizontal 1s ease-out forwards;
+  }
+
+  .animate-timeline-reveal {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: timeline-reveal 2s ease-out forwards;
+  }
+
+  .animate-scan {
+    animation: scan-line 2s ease-in-out infinite;
+  }
+
+  .animate-circuit-trace {
+    animation: circuit-trace 3s linear infinite;
+  }
+
+  .animate-particle-float {
+    animation: particle-float 10s ease-out infinite;
+  }
+
+  /* Hover-triggered animations */
+  .hover-glitch:hover {
+    animation: digital-glitch 0.3s ease-in-out;
+  }
+
+  .hover-glow:hover {
+    animation: glow-expand 0.3s ease-out forwards;
+  }
+
+  .hover-sparkle:hover {
+    animation: sparkle 0.6s ease-in-out;
+  }
+
+  /* Stagger delays for card entries */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+
+  .stagger-6 {
+    animation-delay: 0.6s;
+  }
+
+  /* Accessibility: Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    /* Disable all animations and transitions for users who prefer reduced motion */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    /* Disable hover animations */
+    .hover-glitch:hover,
+    .hover-glow:hover,
+    .hover-sparkle:hover {
+      animation: none !important;
+    }
   }
 }
